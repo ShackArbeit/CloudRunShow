@@ -7,7 +7,9 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "docker:build": "docker build -t cloudrunshow .",
+    "docker:run": "docker run --rm -p 8080:8080 cloudrunshow"
   },
   "dependencies": {
     "chart.js": "^4.5.1",

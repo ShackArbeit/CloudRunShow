@@ -1,0 +1,9 @@
+node_modules
+dist
+.git
+.gitignore
+Dockerfile
+Readme.md
+show.png
+generate_show_png.py
+npm-debug.log*

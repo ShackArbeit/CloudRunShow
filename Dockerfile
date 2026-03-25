@@ -1,5 +1,5 @@
 # Use the official Node.js runtime as the base image
-FROM node:20.10.0 as build
+FROM node:20.10.0 AS build
 
 # Set the working directory in the container
 WORKDIR /cloudrunshow
@@ -8,7 +8,7 @@ WORKDIR /cloudrunshow
 COPY package*.json ./
 
 # Install dependencies
-RUN npm install
+RUN npm ci
 
 # Copy the entire application code to the container
 COPY . .
@@ -19,13 +19,15 @@ RUN npm run build
 # Use Nginx as the production server
 FROM nginx:alpine
 
-COPY nginx.conf /etc/nginx/conf.d/default.conf
+ENV PORT=8080
+
+COPY nginx.conf.template /etc/nginx/templates/default.conf.template
 
 # Copy the built React app to Nginx's web server directory
-COPY --from=build /vbreddy-blog/dist /usr/share/nginx/html
+COPY --from=build /cloudrunshow/dist /usr/share/nginx/html
 
-# Expose port 80 for the Nginx server
-EXPOSE 80
+# Expose the port Cloud Run expects the container to listen on
+EXPOSE 8080
 
 # Start Nginx when the container runs
 CMD ["nginx", "-g", "daemon off;"]
