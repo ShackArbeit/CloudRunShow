@@ -4,6 +4,9 @@ substitutions:
   _REPOSITORY: my-repo
   _IMAGE_NAME: cloudrunshow
 
+options:
+  logging: CLOUD_LOGGING_ONLY
+
 steps:
   - name: gcr.io/cloud-builders/docker
     args:
