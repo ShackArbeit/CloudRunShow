@@ -1,5 +1,5 @@
-# Use the official Node.js runtime as the base image
-FROM node:20.10.0 AS build
+# Use a Node.js version compatible with the current Vite toolchain
+FROM node:22.12.0 AS build
 
 # Set the working directory in the container
 WORKDIR /cloudrunshow
