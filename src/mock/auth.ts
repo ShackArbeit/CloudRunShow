@@ -1,7 +1,7 @@
 import type { LoginRequest, LoginResponse } from '../types/auth'
 
 export const mockLoginAccount = {
-  email: 'demo@gmail.com',
+  email: 'g0972222165@gmail.com',
   password: 'wang8119',
 }
 
